@@ -18,6 +18,6 @@ if __name__ == "__main__":
 
     app.config["TEMP_UPLOAD_FOLDER"] = os.path.join(
         app.root_path, TEMP_UPLOAD_FOLDER)
-    app.config["MAX_CONTENT_LENGTH"] = 40 * 1000 * 1000  # 40 MB
+    app.config["MAX_CONTENT_LENGTH"] = 40 * 1024 * 1024  # 40 MB
 
     app.run(debug=True)
