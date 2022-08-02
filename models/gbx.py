@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from website.helpers.gbx_helper import GbxHelper
+from helpers.gbx_helper import GbxHelper
 from typing import List
 
 
