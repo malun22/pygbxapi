@@ -1,14 +1,17 @@
 from dataclasses import dataclass, field
-from helpers.gbx_helper import GbxHelper
+from dataclasses_json import dataclass_json
+from website.helpers.gbx_helper import GbxHelper
 from typing import List
 
 
+@dataclass_json
 @dataclass
 class Replay:
     driver_login: str
     nickname: str
 
 
+@dataclass_json
 @dataclass
 class Challenge:
     environment: str
@@ -20,6 +23,7 @@ class Challenge:
     mood: str
 
 
+@dataclass_json
 @dataclass
 class ControlEntry:
     enabled: int
@@ -28,6 +32,7 @@ class ControlEntry:
     time: int
 
 
+@dataclass_json
 @dataclass
 class Ghost:
     cp_times: field(default_factory=list)
@@ -40,16 +45,16 @@ class Ghost:
     control_entries: List[ControlEntry] = field(default_factory=list)
 
     # On init
-    formatted_race_time: str = None
-    num_respawns: int = None
-    cp_respawns: List[int] = field(default_factory=list)
+    # formatted_race_time: str = None
+    # num_respawns: int = None
+    # cp_respawns: List[int] = field(default_factory=list)
 
     def __post_init__(self):
-        self.formatted_race_time = GbxHelper.timestamp_to_time(self.race_time)
-        self.num_respawns = GbxHelper.get_num_respawns(self.control_entries)
-        self.cp_respawns = GbxHelper.get_respawns_per_cp(
-            self.control_entries, self.cp_times
-        )
+        # self.formatted_race_time = GbxHelper.timestamp_to_time(self.race_time)
+        # self.num_respawns = GbxHelper.get_num_respawns(self.control_entries)
+        # self.cp_respawns = GbxHelper.get_respawns_per_cp(
+        #     self.control_entries, self.cp_times
+        # )
 
         self.__convert_control_entries()
 
